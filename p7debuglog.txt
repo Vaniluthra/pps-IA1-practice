@@ -1,0 +1,73 @@
+ gcc -g p7original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x856: file p7original.c, line 35.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7original.c:35
+35    c1=input();
+(gdb) s
+input () at p7original.c:10
+10  {
+(gdb) n
+12    printf("Enter real part: ");
+(gdb) n
+13    scanf("%f",&c.real);
+(gdb) 
+Enter real part: 7.5
+14    printf("Enter imaginary part: ");
+(gdb) n
+15    scanf("%f",&c.imaginary);
+(gdb) n
+Enter imaginary part: 3.67
+16    return c;
+(gdb) p c
+$1 = {real = 7.5, imaginary = 3.67000008}
+(gdb) n
+17  }
+(gdb) n
+main () at p7original.c:36
+36    c2=input();
+(gdb) n
+Enter real part: 45.8
+Enter imaginary part: 23.56
+37    res=add(c1,c2);
+(gdb) s
+add (a=..., b=...) at p7original.c:22
+22    sum.real=a.real+b.real;
+(gdb) n
+23    sum.imaginary=a.imaginary+b.imaginary;
+(gdb) n
+24    return sum;
+(gdb) p sum
+$2 = {real = 53.2999992, imaginary = 27.2299995}
+(gdb) p sum.real
+$3 = 53.2999992
+(gdb) n
+25  }
+(gdb) n
+main () at p7original.c:38
+38    output(c1,c2,res);
+(gdb) n
+39    return 0;
+(gdb) c
+Continuing.
+Sum of 7.50+3.67i and 45.80+23.56i is: 53.30+27.23i[Inferior 1 (process 153) exited normally]
+(gdb) 
