@@ -1,0 +1,91 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x90e: file p6original.c, line 68.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6original.c:68
+68  {
+(gdb) n
+71    input_2_strng(x,y);
+(gdb) s
+input_2_strng (a=0x7fffab95c790 "\001", b=0x7fffab95c7b0 "\200\t`\216\207U")
+    at p6original.c:5
+5     printf("Enter 1st word: ");
+(gdb) n
+6     scanf("%s",a);
+(gdb) n
+Enter 1st word: pen
+7     printf("Enter 2nd word: ");
+(gdb) n
+8     scanf("%s",b);
+(gdb) n
+Enter 2nd word: pen
+9   }
+(gdb) n
+main () at p6original.c:72
+72    val=cmp(x,y);
+(gdb) s
+cmp (a=0x7fffab95c790 "pen", b=0x7fffab95c7b0 "pen") at p6original.c:13
+13    int i=0,res;
+(gdb) n
+15    while(a[i]!='\0' && b[i]!='\0')
+(gdb) n
+17      if(a[i]>b[i])
+(gdb) n
+22      else if(b[i]>a[i])
+(gdb) n
+29        i++;
+(gdb) n
+15    while(a[i]!='\0' && b[i]!='\0')
+(gdb) n
+17      if(a[i]>b[i])
+(gdb) p i
+$1 = 1
+(gdb) p a[i]
+$2 = 101 'e'
+(gdb) p a[0]
+$3 = 112 'p'
+(gdb) p a
+$4 = 0x7fffab95c790 "pen"
+(gdb) n
+22      else if(b[i]>a[i])
+(gdb) finish
+Run till exit from #0  cmp (a=0x7fffab95c790 "pen", b=0x7fffab95c7b0 "pen")
+    at p6original.c:22
+0x000055878e600943 in main () at p6original.c:72
+72    val=cmp(x,y);
+Value returned is $5 = 0
+(gdb) n
+73    out(x,y,val);
+(gdb) s
+out (a=0x7fffab95c790 "pen", b=0x7fffab95c7b0 "pen", res=0) at p6original.c:53
+53    if(res==-1)
+(gdb) n
+57    if(res==1)
+(gdb) n
+61    if(res==0)
+(gdb) n
+63      printf("%s is equal to %s",a,b);
+(gdb) n
+65  }
+(gdb) c
+Continuing.
+pen is equal to pen[Inferior 1 (process 269) exited normally]
+(gdb) 
