@@ -1,0 +1,118 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa14: file p8original.c, line 73.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8original.c:73
+73  {
+(gdb) n
+74    int n=get_n();
+(gdb) s
+get_n () at p8original.c:10
+10  {
+(gdb) n
+12    printf("Enter the number of complex numbers: ");
+(gdb) n
+13    scanf("%d",&n);
+(gdb) n
+Enter the number of complex numbers: 4n
+14    return n;
+(gdb) n
+15  }
+(gdb) p n
+$1 = 4
+(gdb) n
+main () at p8original.c:75
+75    complex c[n],res;
+(gdb) n
+76    input_n_complex(n,c);
+(gdb) s
+input_n_complex (n=4, c=0x7ffd27db5f50) at p8original.c:29
+29    for(int i=0;i<n;i++)
+(gdb) n
+31      c[i]=input_complex();
+(gdb) n
+Enter the real part: Enter the imaginary part: 5
+29    for(int i=0;i<n;i++)
+(gdb) n
+31      c[i]=input_complex();
+(gdb) n
+Enter the real part: 5
+Enter the imaginary part: 3
+29    for(int i=0;i<n;i++)
+(gdb) finish
+Run till exit from #0  input_n_complex (n=4, c=0x7ffd27db5f50)
+    at p8original.c:29
+Enter the real part: 7.5
+Enter the imaginary part: 7.5
+Enter the real part: 4.8
+Enter the imaginary part: 5.9
+main () at p8original.c:77
+77    res=add_n_complex(n,c);
+(gdb) s
+add_n_complex (n=4, c=0x7ffd27db5f50) at p8original.c:46
+46    res.img=0;
+(gdb) p res
+$2 = {real = 6.08882519e-15, img = 4.59135442e-41}
+(gdb) n
+47    res.real=0;
+(gdb) n
+48    for(int i=0;i<n;i++)
+(gdb) n
+50      res=add(res,c[i]);
+(gdb) n
+48    for(int i=0;i<n;i++)
+(gdb) n
+50      res=add(res,c[i]);
+(gdb) n
+48    for(int i=0;i<n;i++)
+(gdb) n
+50      res=add(res,c[i]);
+(gdb) n
+48    for(int i=0;i<n;i++)
+(gdb) p c
+$3 = (complex *) 0x7ffd27db5f50
+(gdb) p c[i]
+$4 = {real = 7.5, img = 7.5}
+(gdb) p res
+$5 = {real = 12.5, img = 15.5}
+(gdb) finish
+Run till exit from #0  add_n_complex (n=4, c=0x7ffd27db5f50)
+    at p8original.c:48
+0x00005583dfc00abb in main () at p8original.c:77
+77    res=add_n_complex(n,c);
+Value returned is $6 = {real = 17.2999992, img = 21.3999996}
+(gdb) p res
+$7 = {real = 1.40129846e-45, img = 0}
+(gdb) p c[3]
+$8 = {real = 4.80000019, img = 5.9000001}
+(gdb) n
+78    output(n,c,res);
+(gdb) n
+Sum of: 0.00+5.00i
+5.00+3.00i
+7.50+7.50i
+4.80+5.90i
+is: 17.30+21.40i
+79    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 47) exited normally]
+(gdb) 
