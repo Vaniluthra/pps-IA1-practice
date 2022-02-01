@@ -52,15 +52,15 @@ void out(char *a,char *b,int res)
 {
   if(res==-1)
   {
-    printf("%s is greater than %s",a,b);
+    printf("%s is greater than %s\n",a,b);
   }
   if(res==1)
   {
-    printf("%s is greater than %s",b,a);
+    printf("%s is greater than %s\n",b,a);
   }
   if(res==0)
   {
-    printf("%s is equal to %s",a,b);
+    printf("%s is equal to %s\n",a,b);
   }
 }
 

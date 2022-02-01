@@ -6,7 +6,6 @@ int input()
   printf("Enter number of values: ");
   scanf("%d",&n);
   return n;
-
 }
 
 void inputarray(int n,int a[n])
@@ -50,3 +49,4 @@ int main()
   output(a,b,sum);
   return 0;
 }
+

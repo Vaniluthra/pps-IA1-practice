@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-int input(int *a, int *b)
+void input(int *a, int *b)
 {
   printf("Enter number: ");
   scanf("%d%d",a,b);
 }
 
-int add(int a,int b,int *c)
+void add(int a,int b,int *c)
 {
   *c=a+b;
 }
@@ -16,7 +16,7 @@ void output(int a,int b,int c)
   printf("Sum of %d and %d is: %d\n",a,b,c);
 }
 
-int main()
+void main()
 {
   int x,y,z;
   input(&x,&y);

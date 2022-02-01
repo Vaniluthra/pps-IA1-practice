@@ -35,8 +35,6 @@ Enter value: 5
 8     return a;
 (gdb) p a
 $1 = 5
-(gdb) p &a
-$2 = (int *) 0x7ffd12a9fe94
 (gdb) n
 9   }
 (gdb) n
