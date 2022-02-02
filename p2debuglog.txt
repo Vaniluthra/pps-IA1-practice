@@ -56,7 +56,7 @@ $4 = 6
 (gdb) p c
 $5 = 4
 (gdb) n
-15    else if((b>a)&&(b>c))
+15    else if(b>c)
 (gdb) n
 16    return b;
 (gdb) n
